@@ -18,6 +18,7 @@ if [ -z "$PLUGIN_CACHE" ]; then
 # REBUILD
 else
   IFS=','; read -ra SOURCES <<< "$PLUGIN_CACHE"
+  mkdir -p $CACHE_DIR
   echo "Building cache for: ${SOURCES[@]}"
   # throws error if a source file doesnt exist
   tar czf "$CACHE_DIR/$CACHE_FILE" ${SOURCES[@]}
