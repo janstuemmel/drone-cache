@@ -6,7 +6,7 @@ CACHE_FILE="cache.tar.gz"
 
 # RESTORE
 if [ -z "$PLUGIN_CACHE" ]; then
-  echo "Rebuilding cache..."
+  echo "Restoring cache..."
 
   if [ -f "$CACHE_DIR/$CACHE_FILE" ]; then
     echo "extracting $CACHE_DIR/$CACHE_FILE"
@@ -19,7 +19,6 @@ if [ -z "$PLUGIN_CACHE" ]; then
 else
   IFS=','; read -ra SOURCES <<< "$PLUGIN_CACHE"
   mkdir -p $CACHE_DIR
-  echo "Building cache for: ${SOURCES[@]}"
-  # throws error if a source file doesnt exist
+  echo "Rebuilding cache for: ${SOURCES[@]}"
   tar czf "$CACHE_DIR/$CACHE_FILE" ${SOURCES[@]}
 fi
